@@ -1,0 +1,390 @@
+package com.company;
+
+public class projekt {
+    public static void main(String[] arg) {
+        Roslina zielen  = new Palmakokosowa(); //  polimorfizm sluzy do traktowania obiektów pewnych klas jako obiekty innych klas z zachowaniem pełnej funkcjonalności w obrębie wspólnego mianownika, 
+        zielen.informacje();
+
+        Palmakokosowa zielen1 = new Palmakokosowa();
+        zielen1.setPoziomtwardosciowocu("duży");
+        zielen1.getPoziomtwardosciowocu();
+    }
+}
+
+interface Warunki
+{
+    void naslonecznienie();
+    void dostepnoscwody();
+    void temperatura();
+}
+
+interface Budowa
+{
+    void lyko();
+    void drewno();
+
+}
+
+abstract class Roslina implements Warunki, Budowa //skorzystanie z klasy Abstrakcji umożliwia utworzenie rusztowania, posiadającego cechy dziedziczone przez inne klasy bez tworzenia dodatkowych instancji
+{
+    private String _srodowisko;     // hermetyzacja jest wykorzystana w celu ochrony danych przez uniemożlwiony do nich dostęp spoza klasy
+    private String _rodzajlodykgi;
+    private String _rodzajkorzenia;
+    private String _rodzajlisci;
+
+    public void informacje()
+    {
+        getSrodowisko();
+        getRodzajlodygi();
+        getRodzajkorzenia();
+        getRodzajlisci();
+    }
+
+
+    public void setSrodowisko(String srodowisko)
+    {
+        this._srodowisko = srodowisko;
+    }
+    public void setRodzajlodygi(String rodzajlodygi)
+    {
+        this._rodzajlodykgi = rodzajlodygi;
+    }
+    public void setRodzajkorzenia(String rodzajkorzenia)
+    {
+        this._rodzajkorzenia = rodzajkorzenia;
+    }
+    private void setRodzajlisci(String rodzajlisci)
+    {
+        this._rodzajlisci = rodzajlisci;
+    }
+
+    public void getSrodowisko()
+    {
+        System.out.println("środowisko: " + _srodowisko);
+    }
+    public void getRodzajlodygi()
+    {
+        System.out.println("Rodzaj łodygi: " + _rodzajlodykgi);
+    }
+    public void getRodzajkorzenia()
+    {
+        System.out.println("Rodzaj korzenia: " + _rodzajkorzenia);
+    }
+    public void getRodzajlisci()
+    {
+        System.out.println("Rodzaj lisci: " + _rodzajlisci);
+    }
+}
+
+abstract class Nagonasienne extends Roslina // dziedziczenie umożliwia utworzenie hierarchi klas, w podanym przykładzie nagonasinne są są roślinami więc będą posiadały cechy roślin oraz jakieś własne utworzone w ich klasie, które zostaną następnie znowu odziedziczone przez kolejną podklasę nagonasiennych
+{
+    private String _rodzajzapylania;
+    private String _gromada;
+
+    public void informajce()
+    {
+        super.informacje();
+
+        getRodzajzapylania();
+        getGromada();
+    }
+
+
+
+    public void setRodzajzapylania(String rodzajzapylania)
+    {
+        this._rodzajzapylania = rodzajzapylania;
+    }
+    public void setGromada(String gromada)
+    {
+        this._gromada = gromada;
+    }
+
+    public void getRodzajzapylania()
+    {
+        System.out.println("Rodzaj zapylania: " + _rodzajzapylania);
+    }
+    public void getGromada()
+    {
+        System.out.println("Gromada: " + _gromada);
+    }
+}
+
+abstract class Okrytonasienne extends Roslina
+{
+    private String _rodzajkwiatostanu;
+    private int _iloscliscieni;
+    private String _rodzajnasion;
+
+    public void informajce()
+    {
+        super.informacje();
+
+        getRodzajkwiatostanu();
+        getIloscliscieni();
+        getRodzajnasion();
+    }
+
+
+    public void setRodzajkwiatostanu(String rodzajkwiatostanu)
+    {
+        this._rodzajkwiatostanu = rodzajkwiatostanu;
+    }
+    public void setIloscliscieni(int iloscliscieni)
+    {
+        this._iloscliscieni = iloscliscieni;
+    }
+    public void setRodzajnaasion(String rodzajnaasion)
+    {
+        this._rodzajnasion = rodzajnaasion;
+    }
+
+    public void getRodzajkwiatostanu()
+    {
+        System.out.println("Rodzaj kwiatostanu: " + _rodzajkwiatostanu);
+    }
+    public void getIloscliscieni()
+    {
+        System.out.println("Ilość liścieni: " + _iloscliscieni);
+    }
+    public void getRodzajnasion()
+    {
+        System.out.println("Rodzaj nasion: " + _rodzajnasion);
+    }
+}
+
+class Swierk extends Nagonasienne
+{
+    private String _rodzajszyszek;
+    private String _gatunek;
+
+    public void informajce()
+    {
+        super.informacje();
+
+        getRodzajszyszek();
+        getGatunek();
+    }
+
+
+
+    public void setRodzajszyszek(String rodzajszyszek)
+    {
+        this._rodzajszyszek = rodzajszyszek;
+    }
+    public void setGatunek(String gatunek)
+    {
+        this._gatunek = gatunek;
+    }
+
+    public void getRodzajszyszek()
+    {
+        System.out.println("Rodzajszyszek: " + _rodzajszyszek);
+    }
+    public void getGatunek()
+    {
+        System.out.println("Gatnuek: " + _gatunek);
+    }
+
+    @java.lang.Override
+    public void naslonecznienie() {
+        System.out.println("Nasłonecznienie: świerk");
+    }
+
+    @java.lang.Override
+    public void dostepnoscwody() {
+        System.out.println("Dostępność wody: świerk");
+    }
+
+    @java.lang.Override
+    public void temperatura() {
+        System.out.println("Temperatura: świerk");
+    }
+
+    @java.lang.Override
+    public void lyko() {
+        System.out.println("Łyko: świerk");
+    }
+
+    @java.lang.Override
+    public void drewno() {
+        System.out.println("Drewno: świerk");
+    }
+}
+
+class Milorzab extends Nagonasienne
+{
+    private String _nerwacjaliscia;
+    private String _typkorony;
+
+    public void informajce()
+    {
+        super.informacje();
+
+        getNerwacjaliscia();
+        getTypkorony();
+    }
+
+
+    public void setNerwacjaliscia(String nerwacjaliscia)
+    {
+        this._nerwacjaliscia = nerwacjaliscia;
+    }
+    public void setTypkorony(String typkorony)
+    {
+        this._typkorony = typkorony;
+    }
+
+    public void getNerwacjaliscia()
+    {
+        System.out.println("Nerwacja liścia: " + _nerwacjaliscia);
+    }
+    public void getTypkorony()
+    {
+        System.out.println("Typkorony: " + _typkorony);
+    }
+
+    @java.lang.Override
+    public void naslonecznienie() {
+        System.out.println("Nasłonecznienie: miłorząb");
+    }
+
+    @java.lang.Override
+    public void dostepnoscwody() {
+        System.out.println("Dostępność wody: miłorząb");
+    }
+
+    @java.lang.Override
+    public void temperatura() {
+        System.out.println("Temperatura: miłorząb");
+    }
+
+    @java.lang.Override
+    public void lyko() {
+        System.out.println("Łyko: miłorząb");
+    }
+
+    @java.lang.Override
+    public void drewno() {
+        System.out.println("Drewno: miłorząb");
+    }
+}
+
+class Palmakokosowa extends Okrytonasienne
+{
+    private double _wagaowocu;
+    private String _poziomtwardosciowocu;
+
+    public void informajce()
+    {
+        super.informacje();
+
+        getWagaowocu();
+        getPoziomtwardosciowocu();
+    }
+
+
+
+    public void setWagaowocu(double wagaowocu)
+    {
+        this._wagaowocu = wagaowocu;
+    }
+    public void setPoziomtwardosciowocu(String poziomtwardosciowocu)
+    {
+        this._poziomtwardosciowocu = poziomtwardosciowocu;
+    }
+
+    public void getWagaowocu()
+    {
+        System.out.println("Waga owocu: " + _wagaowocu);
+    }
+    public void getPoziomtwardosciowocu()
+    {
+        System.out.println("Poziomtwardosciowocu: " + _poziomtwardosciowocu);
+    }
+
+    @java.lang.Override
+    public void naslonecznienie() {
+        System.out.println("Nasłonecznienie: palma kokosowa");
+    }
+
+    @java.lang.Override
+    public void dostepnoscwody() {
+        System.out.println("Dostępność wody: palma kokosowa");
+    }
+
+    @java.lang.Override
+    public void temperatura() {
+        System.out.println("Temperatura: palma kokosowa");
+    }
+
+    @java.lang.Override
+    public void lyko() {
+        System.out.println("Łyko: palma kokosowa");
+    }
+
+    @java.lang.Override
+    public void drewno() {
+        System.out.println("Drewno: palma kokosowa");
+    }
+}
+
+class Kukurydza extends Okrytonasienne
+{
+    private double _dlugosckolby;
+    private int _iloscziaren;
+
+    public void informajce()
+    {
+        super.informacje();
+
+        getDlugosckolby();
+        getIloscziaren();
+    }
+
+
+    public void setDlugosckolby(double dlugosckolby)
+    {
+        this._dlugosckolby = dlugosckolby;
+    }
+    public void setIloscziaren(int iloscziaren)
+    {
+        this._iloscziaren = iloscziaren;
+    }
+
+    public void getDlugosckolby()
+    {
+        System.out.println("Waga owocu: " + _dlugosckolby);
+    }
+    public void getIloscziaren()
+    {
+        System.out.println("Ilość ziaren: " + _iloscziaren);
+    }
+
+    @java.lang.Override
+    public void naslonecznienie() {
+        System.out.println("Nasłonecznienie: kukurydza");
+    }
+
+    @java.lang.Override
+    public void dostepnoscwody() {
+        System.out.println("Dostępność wody: kukurydza");
+    }
+
+    @java.lang.Override
+    public void temperatura() {
+        System.out.println("Temperatura: kukurydza");
+    }
+
+    @java.lang.Override
+    public void lyko() {
+        System.out.println("Łyko: kukurydza");
+    }
+
+    @java.lang.Override
+    public void drewno() {
+        System.out.println("Drewno: kukurydza");
+    }
+}
+
+
